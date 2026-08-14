@@ -1,0 +1,50 @@
+/* =========================================================
+   Lucky Answer Group — style.css
+   NOTE: This is a minimal placeholder stylesheet for Part 1.
+   Full responsive styling (layout, colour scheme, typography,
+   SEO-friendly structure) will be built out in Part 2 of the PoE.
+   ========================================================= */
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    color: #1a1a1a;
+}
+
+header, footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #14324d;
+    color: #ffffff;
+}
+
+header nav ul, footer nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+header nav a, footer nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #e0982b;
+    color: #1a1a1a;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}

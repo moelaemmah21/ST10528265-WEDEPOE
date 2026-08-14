@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote | Lucky Answer Group</title>
+    <meta name="description" content="Request a quote for electrical or FTTH fibre installation and maintenance services from Lucky Answer Group.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="branding">
+            <img src="images/logo.png" alt="Lucky Answer Group logo">
+        </div>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="enquiry.html" aria-current="page">Get a Quote</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Request a Quote</h1>
+            <p>Tell us what you need and we'll get back to you within one business day.</p>
+        </section>
+
+        <!-- ============ QUOTE REQUEST FORM ============ -->
+        <!-- Note: form does not submit anywhere yet. Client-side validation and
+             submission handling (e.g. via EmailJS/Formspree) will be added in Part 3. -->
+        <section class="enquiry-form">
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Your Details</legend>
+
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Job Details</legend>
+
+                    <label for="service-type">Service Required</label>
+                    <select id="service-type" name="service-type" required>
+                        <option value="">-- Please select --</option>
+                        <option value="electrical">Electrical Installation / Fault-Finding</option>
+                        <option value="ftth">FTTH Fibre Installation</option>
+                        <option value="maintenance">Maintenance Contract</option>
+                        <option value="other">Other / Not Sure</option>
+                    </select>
+
+                    <label for="property-type">Property Type</label>
+                    <select id="property-type" name="property-type">
+                        <option value="residential">Residential Home</option>
+                        <option value="estate">Estate / Complex</option>
+                        <option value="commercial">Commercial / Small Business</option>
+                    </select>
+
+                    <label for="message">Tell us more about the job</label>
+                    <textarea id="message" name="message" rows="6"></textarea>
+                </fieldset>
+
+                <button type="submit">Submit Enquiry</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="enquiry.html">Get a Quote</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <p>&copy; 2026 Lucky Answer Group. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
