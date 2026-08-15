@@ -6,10 +6,11 @@ PoE for WEDE5020: Web Development (Introduction)
 
 ## Student Information
 - **Name:** Mamphaeng Emmah Moela
-- **Student Number:** [Insert Student Number]
+- **Student Number:** ST10528265
 - **Module:** WEDE5020 — Web Development (Introduction)
 - **Institution:** The Independent Institute of Education (IIE)
 - **Year:** 2026
+
 
 ## Project Overview
 Lucky Answer Group is a Gauteng-based small business offering electrical
