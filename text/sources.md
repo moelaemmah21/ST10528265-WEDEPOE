@@ -6,10 +6,7 @@ required by section 3.1 of the WEDE5020 PoE brief.
 ## Organisation's Website / Social Media
 Lucky Answer Group is a fictional (hypothetical) small business created for
 this PoE, so it has no existing website or social media profiles to draw
-content from. All organisational content below is therefore **original
-content**, written specifically for this assignment, as permitted by the
-brief ("if the storyline is fictional, you would still be required to
-present realistic content for the fictional client").
+content from. 
 
 ## Original Content (written for this assignment)
 - Company history, mission and vision statement (`about.html`)
