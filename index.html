@@ -1,3 +1,8 @@
+bash
+
+cat /home/claude/lucky-answer-group/lucky-answer-group/index.html
+Output
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,18 +10,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucky Answer Group | Electrical & Fibre Installations, Gauteng</title>
     <meta name="description" content="Lucky Answer Group provides certified electrical installations and FTTH fibre installation and maintenance services across Gauteng, South Africa.">
-    <!-- Stylesheet will be added in Part 2 of the PoE -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- Accessibility: skip link added during Part 1 self-review, lets keyboard/screen-reader
+         users jump straight past the repeated nav to the main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- ============ HEADER & NAVIGATION ============ -->
-    <!-- Shared across all pages for consistent site-wide navigation -->
     <header>
         <div class="branding">
             <img src="images/logo.png" alt="Lucky Answer Group logo">
         </div>
-        <nav aria-label="Main navigation">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+            <span class="hamburger"></span>
+        </label>
+        <nav aria-label="Main navigation" id="primary-nav">
             <ul>
                 <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -27,10 +39,16 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- ============ HERO SECTION ============ -->
         <section class="hero">
-            <img src="images/hero-banner.jpg" alt="Lucky Answer Group electrical and fibre installation banner">
+            <img
+                src="images/hero-banner-1600.jpg"
+                srcset="images/hero-banner-800.jpg 800w,
+                        images/hero-banner-1200.jpg 1200w,
+                        images/hero-banner-1600.jpg 1600w"
+                sizes="100vw"
+                alt="Lucky Answer Group electrical and fibre installation banner">
             <div class="hero-text">
                 <h1>Powering Homes. Connecting Communities.</h1>
                 <p>Certified electrical and FTTH fibre installation and maintenance services across Gauteng.</p>
@@ -74,6 +92,26 @@
             </div>
         </section>
 
+        <!-- ============ RECENT WORK / PORTFOLIO ============ -->
+        <section class="portfolio">
+            <h2>Recent Work</h2>
+            <p>A snapshot of recent electrical and fibre installation projects completed across Gauteng estates and homes.</p>
+            <div class="portfolio-grid">
+                <figure>
+                    <img src="images/portfolio-1.jpg" alt="Completed DB board upgrade and rewiring at a residential property">
+                    <figcaption>DB board upgrade &amp; rewiring — residential home, Pretoria East</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/portfolio-2.jpg" alt="FTTH fibre cabling installed along an estate perimeter wall">
+                    <figcaption>FTTH fibre rollout — residential estate, Centurion</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/portfolio-3.jpg" alt="Technician completing a fibre splicing and termination job">
+                    <figcaption>Fibre splicing &amp; termination — small business fit-out, Johannesburg</figcaption>
+                </figure>
+            </div>
+        </section>
+
         <!-- ============ CALL TO ACTION BAND ============ -->
         <section class="cta-band">
             <h2>Need an electrician or fibre installer you can trust?</h2>
@@ -88,7 +126,6 @@
     </main>
 
     <!-- ============ FOOTER ============ -->
-    <!-- Shared across all pages -->
     <footer>
         <nav aria-label="Footer navigation">
             <ul>
@@ -102,7 +139,6 @@
         <p>&copy; 2026 Lucky Answer Group. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript will be added in Part 3 of the PoE -->
     <script src="js/main.js"></script>
 </body>
 </html>

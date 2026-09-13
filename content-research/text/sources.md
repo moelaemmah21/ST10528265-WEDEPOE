@@ -44,7 +44,8 @@ having a business website) in accurate, verifiable information:
   make them visible.* [video] Available at:
   <https://www.nngroup.com/videos/navigation-menu-visibility/> [Accessed 13
   August 2026]. — Informed the consistent, always-visible navigation menu
-  used across all five pages.
+  used across all five pages, and the decision to give the mobile
+  hamburger menu a fully working, easy-to-reach toggle in Part 2.
 
 - Priority One, 2026. *Considerations for a small business website.*
   [online] Available at:
@@ -52,12 +53,19 @@ having a business website) in accurate, verifiable information:
   [Accessed 13 August 2026]. — Informed the decision to keep the site
   simple, fast, and focused on a clear call to action (quote requests).
 
+- Mozilla Developer Network (MDN), 2026. *CSS Grid Layout* and *Using CSS
+  custom properties (variables).* [online] Available at:
+  <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout> and
+  <https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties>
+  [Accessed 30 August 2026]. — Referenced while building the Part 2
+  stylesheet's layout and colour/spacing system.
+
 ## Per-Page Summary
 
 | Page | Content Type | Source |
 |---|---|---|
-| `index.html` | Hero copy, service highlights | Original |
+| `index.html` | Hero copy, service highlights, "Recent Work" gallery captions | Original |
 | `about.html` | History, mission, vision, certifications | Original + LeadServices (2026) for standards references |
-| `services.html` | Service descriptions | Original + LeadServices (2026) for SANS 10198 reference |
+| `services.html` | Service descriptions and introductory paragraphs (added Part 2) | Original + LeadServices (2026) for SANS 10198 reference |
 | `enquiry.html` | Form labels/structure | Original |
 | `contact.html` | Branch details, form | Original (fictional placeholder details) |

@@ -1,50 +1,696 @@
-/* =========================================================
-   Lucky Answer Group — style.css
-   NOTE: This is a minimal placeholder stylesheet for Part 1.
-   Full responsive styling (layout, colour scheme, typography,
-   SEO-friendly structure) will be built out in Part 2 of the PoE.
-   ========================================================= */
+/* =====================================================================
+   LUCKY ANSWER GROUP — style.css
+   Part 2: CSS Styling and Responsive Design (WEDE5020 PoE)
+   Author: Mamphaeng Emmah Moela
 
-body {
-    margin: 0;
-    font-family: sans-serif;
-    color: #1a1a1a;
-}
+   Contents:
+   1. CSS Reset / Base Styles
+   2. CSS Custom Properties (colour scheme, spacing, fonts)
+   3. Typography
+   4. Layout (Header, Navigation, Footer)
+   5. Components (Buttons, Cards, Forms, etc.)
+   6. Page-Specific Sections
+   7. Responsive Design (Media Queries / Breakpoints)
+   ===================================================================== */
 
-header, footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background-color: #14324d;
-    color: #ffffff;
-}
-
-header nav ul, footer nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.2rem;
+/* ---------------------------------------------------------------------
+   1. CSS RESET
+   A minimal reset so the site looks consistent across different
+   browsers, rather than relying on each browser's own default styles.
+   --------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-header nav a, footer nav a {
-    color: #ffffff;
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
     text-decoration: none;
+    color: inherit;
 }
 
-.card-grid {
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+
+/* ---------------------------------------------------------------------
+   2. CSS CUSTOM PROPERTIES
+   Central place for the colour scheme, spacing scale and typography
+   choices. Using variables here means every component below can
+   reference the same values ("cascading" - change once, apply
+   everywhere) instead of repeating raw hex codes and pixel values.
+   --------------------------------------------------------------------- */
+:root {
+    /* Colour palette - navy/amber, matching the approved Website Project Proposal */
+    --color-navy: #14324d;
+    --color-navy-light: #1e4161;
+    --color-amber: #e0982b;
+    --color-amber-dark: #c47f1c;
+    --color-white: #ffffff;
+    --color-light: #f2f4f6;
+    --color-light-alt: #e9edf1;
+    --color-text: #1a1a1a;
+    --color-text-muted: #55606b;
+    --color-border: #d7dde2;
+
+    /* Typography scale (rem-based for accessible, responsive scaling) */
+    --font-heading: 'Poppins', 'Segoe UI', sans-serif;
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --fs-base: 1rem;
+    --fs-sm: 0.875rem;
+    --fs-lg: 1.125rem;
+    --fs-h1: clamp(2rem, 4vw + 1rem, 3.5rem);
+    --fs-h2: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+    --fs-h3: 1.25rem;
+    --lh-base: 1.6;
+
+    /* Spacing scale */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+
+    /* Layout */
+    --max-width: 1200px;
+    --radius: 8px;
+    --shadow: 0 4px 14px rgba(20, 50, 77, 0.12);
+}
+
+/* ---------------------------------------------------------------------
+   3. TYPOGRAPHY
+   --------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    line-height: var(--lh-base);
+    color: var(--color-text);
+    background-color: var(--color-white);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--color-navy);
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); margin-bottom: var(--space-md); }
+h3 { font-size: var(--fs-h3); margin-bottom: var(--space-xs); }
+
+p { margin-bottom: var(--space-sm); color: var(--color-text-muted); }
+
+/* Accessibility helpers */
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--color-amber);
+    color: var(--color-navy);
+    padding: var(--space-xs) var(--space-sm);
+    z-index: 100;
+    font-weight: 600;
+}
+.skip-link:focus {
+    left: var(--space-sm);
+    top: var(--space-sm);
+}
+
+/* ---------------------------------------------------------------------
+   4. LAYOUT — HEADER, NAVIGATION, FOOTER
+   Flexbox is used here for one-dimensional alignment (logo left,
+   nav right; footer items in a row).
+   --------------------------------------------------------------------- */
+header {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-lg);
+    background-color: var(--color-navy);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: var(--shadow);
 }
 
+.branding img {
+    height: 48px;
+    width: auto;
+}
+
+nav ul {
+    display: flex;
+    gap: var(--space-md);
+}
+
+nav a {
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: var(--fs-sm);
+    padding: var(--space-xs) 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Pseudo-classes: hover, focus and current-page state for nav links */
+nav a:hover,
+nav a:focus {
+    color: var(--color-amber);
+    border-bottom-color: var(--color-amber);
+}
+
+nav a[aria-current="page"] {
+    color: var(--color-amber);
+    border-bottom-color: var(--color-amber);
+}
+
+/* Mobile nav toggle - pure CSS (checkbox hack), no JavaScript required.
+   Hidden on desktop; shown only inside the mobile breakpoint below. */
+.nav-toggle-checkbox {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    cursor: pointer;
+    padding: var(--space-xs);
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: var(--color-white);
+    border-radius: 2px;
+    position: relative;
+    transition: background 0.2s ease;
+}
+.hamburger::before,
+.hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+.nav-toggle-label:hover .hamburger,
+.nav-toggle-label:hover .hamburger::before,
+.nav-toggle-label:hover .hamburger::after {
+    background: var(--color-amber);
+}
+
+footer {
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    text-align: center;
+    padding: var(--space-lg) var(--space-sm);
+    margin-top: var(--space-xl);
+}
+
+footer nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-sm);
+}
+
+footer nav a {
+    color: var(--color-light);
+}
+footer nav a:hover,
+footer nav a:focus {
+    color: var(--color-amber);
+}
+
+footer p {
+    color: var(--color-light-alt);
+    font-size: var(--fs-sm);
+}
+
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* ---------------------------------------------------------------------
+   5. COMPONENTS
+   --------------------------------------------------------------------- */
+
+/* Buttons / Calls to action */
 .cta-button {
     display: inline-block;
-    background-color: #e0982b;
-    color: #1a1a1a;
-    padding: 0.6rem 1.2rem;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
+    background-color: var(--color-amber);
+    color: var(--color-navy);
+    font-weight: 600;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.cta-button:hover,
+.cta-button:focus {
+    background-color: var(--color-amber-dark);
+    transform: translateY(-2px);
+}
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* Hero (uses CSS Grid to layer text over the banner image) */
+.hero {
+    display: grid;
+    grid-template-areas: "stack";
+}
+.hero img,
+.hero .hero-text {
+    grid-area: stack;
+}
+.hero img {
+    width: 100%;
+    height: clamp(320px, 55vw, 560px);
+    object-fit: cover;
+}
+.hero-text {
+    align-self: center;
+    padding: var(--space-lg);
+    max-width: 640px;
+    color: var(--color-white);
+}
+.hero-text h1 { color: var(--color-white); }
+.hero-text h1 :is(span) { color: var(--color-amber); }
+.hero-text p {
+    color: var(--color-light);
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-md);
+}
+
+.intro,
+.services-preview,
+.cta-band,
+.trust-strip,
+.page-header,
+.history,
+.mission-vision,
+.certifications,
+.team,
+.service-detail,
+.locations,
+.contact-form,
+.enquiry-form {
+    padding: var(--space-xl) var(--space-lg);
+}
+
+.page-header {
+    background-color: var(--color-light);
+    text-align: center;
+}
+.page-header p { color: var(--color-text-muted); font-size: var(--fs-lg); }
+
+/* Card grid - CSS Grid for a responsive, evenly spaced multi-column layout */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+.card {
+    background-color: var(--color-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    text-align: center;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+}
+.card img {
+    width: 96px;
+    margin: 0 auto var(--space-sm);
+}
+.card a {
+    color: var(--color-navy);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-amber);
+}
+.card a:hover,
+.card a:focus {
+    color: var(--color-amber-dark);
+}
+
+.cta-band {
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    text-align: center;
+}
+.cta-band h2 { color: var(--color-white); }
+
+/* Portfolio / recent work gallery */
+.portfolio {
+    text-align: center;
+}
+.portfolio > p {
+    max-width: 640px;
+    margin: 0 auto var(--space-md);
+}
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    text-align: left;
+}
+.portfolio-grid figure {
+    margin: 0;
+    background-color: var(--color-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.portfolio-grid figure:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+}
+.portfolio-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.portfolio-grid figcaption {
+    padding: var(--space-sm);
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+}
+
+.trust-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    text-align: left;
+    background-color: var(--color-light-alt);
+}
+.trust-strip img { width: 80px; }
+.trust-strip a {
+    color: var(--color-navy);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-amber);
+}
+
+/* About page */
+.mv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+.mv-grid > div {
+    background-color: var(--color-light);
+    padding: var(--space-md);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--color-amber);
+}
+
+.certifications ul {
+    margin: var(--space-sm) 0 var(--space-md);
+}
+.certifications li {
+    padding: var(--space-xs) 0 var(--space-xs) var(--space-md);
+    position: relative;
+    color: var(--color-text-muted);
+}
+.certifications li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-amber);
+    font-weight: 700;
+}
+.certifications img { width: 110px; }
+
+/* Services page */
+.service-detail {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+    border-top: 1px solid var(--color-border);
+}
+.service-detail:first-of-type { border-top: none; }
+.service-detail ul { margin-top: var(--space-xs); }
+.service-detail li {
+    padding: var(--space-xs) 0 var(--space-xs) var(--space-md);
+    position: relative;
+    color: var(--color-text-muted);
+}
+.service-detail li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-amber);
+}
+
+/* Contact page */
+.locations {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+.location {
+    background-color: var(--color-light);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+}
+.location address {
+    font-style: normal;
+    color: var(--color-text-muted);
+    margin: var(--space-sm) 0;
+    line-height: 1.9;
+}
+.location a {
+    color: var(--color-navy);
+    font-weight: 600;
+}
+.location a:hover,
+.location a:focus { color: var(--color-amber-dark); }
+
+.map-placeholder {
+    background-color: var(--color-light-alt);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius);
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+}
+
+/* Forms (enquiry + contact) */
+form {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: var(--color-light);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+fieldset {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    margin-bottom: var(--space-sm);
+}
+
+legend {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-navy);
+    padding: 0 var(--space-xs);
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    color: var(--color-navy);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Pseudo-classes: focus state gives clear, accessible feedback */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-amber);
+    box-shadow: 0 0 0 3px rgba(224, 152, 43, 0.25);
+}
+
+button[type="submit"] {
+    align-self: flex-start;
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+    background-color: var(--color-navy-light);
+}
+button[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+/* =====================================================================
+   7. RESPONSIVE DESIGN
+   Breakpoints:
+     - Desktop:  > 1024px  (default styles above)
+     - Tablet:   ≤ 1024px
+     - Mobile:   ≤ 600px
+   ===================================================================== */
+
+/* ---------- TABLET ---------- */
+@media (max-width: 1024px) {
+    .card-grid,
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .mv-grid,
+    .locations {
+        grid-template-columns: 1fr;
+    }
+    .service-detail {
+        grid-template-columns: 100px 1fr;
+    }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+    :root {
+        --space-lg: 1.5rem;
+        --space-xl: 2.5rem;
+    }
+
+    /* Typography adjustment: tighten body copy and loosen line-height
+       slightly on small screens so paragraphs stay readable without
+       excessive scrolling (headings already scale via clamp() above) */
+    body {
+        font-size: 0.9375rem;
+        line-height: 1.7;
+    }
+
+    h2 { margin-bottom: var(--space-sm); }
+
+    header { padding: var(--space-sm); }
+
+    /* Show the hamburger toggle, hide the inline nav by default */
+    .nav-toggle-label {
+        display: block;
+    }
+
+    nav#primary-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-navy);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    nav#primary-nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: var(--space-sm) var(--space-lg);
+    }
+    nav#primary-nav a {
+        display: block;
+        padding: var(--space-sm) 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Checkbox-driven toggle: when checked, reveal the menu */
+    .nav-toggle-checkbox:checked ~ nav#primary-nav {
+        max-height: 400px;
+    }
+
+    .card-grid,
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-detail {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+    .service-detail img {
+        width: 72px;
+        margin-bottom: var(--space-sm);
+    }
+
+    .trust-strip {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    form {
+        padding: var(--space-md);
+    }
+
+    .hero-text {
+        padding: var(--space-md);
+    }
 }

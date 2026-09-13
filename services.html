@@ -5,15 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | Lucky Answer Group</title>
     <meta name="description" content="Electrical installations, fault-finding, FTTH fibre installation and maintenance contracts offered by Lucky Answer Group.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header>
         <div class="branding">
             <img src="images/logo.png" alt="Lucky Answer Group logo">
         </div>
-        <nav aria-label="Main navigation">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+            <span class="hamburger"></span>
+        </label>
+        <nav aria-label="Main navigation" id="primary-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -24,17 +31,22 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="page-header">
             <h1>Our Services</h1>
             <p>Electrical and fibre expertise under one roof.</p>
         </section>
 
-        <!-- ============ ELECTRICAL SERVICES ============ -->
         <section class="service-detail" id="electrical">
             <img src="images/icon-electrical.png" alt="Electrical installation icon">
             <div>
                 <h2>Electrical Installations &amp; Fault-Finding</h2>
+                <p>
+                    From a single faulty circuit to a full distribution-board upgrade, our
+                    registered electricians handle residential and small-commercial electrical
+                    work end to end, and issue a Certificate of Compliance (CoC) once the job
+                    passes inspection.
+                </p>
                 <ul>
                     <li>Certificate of Compliance (CoC) inspections and issuing</li>
                     <li>Distribution board (DB) upgrades and rewiring</li>
@@ -44,11 +56,15 @@
             </div>
         </section>
 
-        <!-- ============ FTTH SERVICES ============ -->
         <section class="service-detail" id="ftth">
             <img src="images/icon-fibre.png" alt="Fibre installation icon">
             <div>
                 <h2>FTTH Installation</h2>
+                <p>
+                    We install fibre connections for homeowners, estates and small businesses,
+                    following SANS 10198 optical fibre cabling guidelines from the initial site
+                    survey through to a working, tested connection.
+                </p>
                 <ul>
                     <li>End-to-end Fibre-to-the-Home installation for houses, complexes and estates</li>
                     <li>Fibre splicing, termination and testing in line with SANS 10198 guidelines</li>
@@ -58,11 +74,15 @@
             </div>
         </section>
 
-        <!-- ============ MAINTENANCE SERVICES ============ -->
         <section class="service-detail" id="maintenance">
             <img src="images/icon-maintenance.png" alt="Maintenance icon">
             <div>
                 <h2>Maintenance Contracts</h2>
+                <p>
+                    For estates and businesses that want to avoid unexpected downtime, we offer
+                    ongoing maintenance agreements covering both the electrical and fibre-network
+                    side of a property, with a single point of contact for both.
+                </p>
                 <ul>
                     <li>Scheduled electrical safety inspections for estates and businesses</li>
                     <li>Ongoing fibre-network health checks and preventative maintenance</li>
@@ -72,7 +92,6 @@
             </div>
         </section>
 
-        <!-- ============ CALL TO ACTION ============ -->
         <section class="cta-band">
             <h2>Ready to get started?</h2>
             <a href="enquiry.html" class="cta-button">Request a Quote</a>
