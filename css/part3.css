@@ -99,3 +99,7 @@ input.valid, select.valid, textarea.valid { border-color: #2e7d32; }
 .form-response pre { white-space: pre-wrap; background: #fff; padding: var(--space-sm); border-radius: var(--radius); font-size: var(--fs-sm); }
 .form-response .note { font-size: var(--fs-sm); color: var(--color-text-muted); }
 button[disabled] { opacity: 0.6; cursor: wait; }
+
+/* ---------- Gallery: 4 columns on wide screens (8 photos = 2 even rows) ---------- */
+@media (min-width: 1025px) { .portfolio-grid { grid-template-columns: repeat(4, 1fr); } }
+.portfolio-grid img { object-position: center; }
