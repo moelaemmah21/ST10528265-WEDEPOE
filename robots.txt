@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /documents/
+Disallow: /content-research/
+
+Sitemap: https://moelaemmah21.github.io/ST10528265-WEDEPOE/sitemap.xml

@@ -3,17 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Lucky Answer Group</title>
-    <meta name="description" content="Contact Lucky Answer Group's Pretoria or Johannesburg branches for electrical and FTTH fibre services.">
+    <title>Contact Us | Pretoria & Johannesburg Branches | Lucky Answer Group</title>
+    <meta name="description" content="Find Lucky Answer Group on the map: Pretoria (Sunnyside) and Johannesburg (Parktown) branches. Call, email or send us a message.">
+    <meta name="keywords" content="contact electrician, Lucky Answer Group Pretoria, Lucky Answer Group Johannesburg, branch map, fibre installer contact">
+    <meta name="author" content="Lucky Answer Group">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://moelaemmah21.github.io/ST10528265-WEDEPOE/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact Us | Pretoria & Johannesburg Branches | Lucky Answer Group">
+    <meta property="og:description" content="Find Lucky Answer Group on the map: Pretoria (Sunnyside) and Johannesburg (Parktown) branches. Call, email or send us a message.">
+    <meta property="og:url" content="https://moelaemmah21.github.io/ST10528265-WEDEPOE/contact.html">
+    <meta property="og:image" content="https://moelaemmah21.github.io/ST10528265-WEDEPOE/images/electrician-fibre-installer-hero-banner-1200.jpg">
+    <meta name="theme-color" content="#14324d">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/part3.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
-<body>
+<body data-page="contact">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header>
         <div class="branding">
-            <img src="images/logo.png" alt="Lucky Answer Group logo">
+            <img src="images/lucky-answer-group-logo.png" alt="Lucky Answer Group logo">
         </div>
-        <nav aria-label="Main navigation">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+            <span class="hamburger"></span>
+        </label>
+        <nav aria-label="Main navigation" id="primary-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -25,13 +44,12 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="page-header">
             <h1>Contact Us</h1>
             <p>Two branches serving Gauteng. Reach out any time.</p>
         </section>
 
-        <!-- ============ BRANCH LOCATIONS ============ -->
         <section class="locations">
             <article class="location">
                 <h2>Pretoria Branch</h2>
@@ -40,10 +58,7 @@
                     Tel: <a href="tel:+27121234567">012 123 4567</a><br>
                     Email: <a href="mailto:pretoria@luckyanswergroup.co.za">pretoria@luckyanswergroup.co.za</a>
                 </address>
-                <!-- Embedded map placeholder - to be replaced with a live embed (e.g. Google Maps iframe) -->
-                <div class="map-placeholder" aria-label="Map showing Pretoria branch location">
-                    Map: Pretoria Branch
-                </div>
+                <div class="map" id="map-pretoria" role="img" aria-label="Interactive map showing the Pretoria branch location"></div>
             </article>
 
             <article class="location">
@@ -53,16 +68,13 @@
                     Tel: <a href="tel:+27112345678">011 234 5678</a><br>
                     Email: <a href="mailto:jhb@luckyanswergroup.co.za">jhb@luckyanswergroup.co.za</a>
                 </address>
-                <div class="map-placeholder" aria-label="Map showing Johannesburg branch location">
-                    Map: Johannesburg Branch
-                </div>
+                <div class="map" id="map-johannesburg" role="img" aria-label="Interactive map showing the Johannesburg branch location"></div>
             </article>
         </section>
 
-        <!-- ============ CONTACT FORM ============ -->
         <section class="contact-form">
             <h2>Send Us a Message</h2>
-            <form action="#" method="post">
+            <form id="contact-form" action="#" method="post" novalidate>
                 <label for="contact-name">Full Name</label>
                 <input type="text" id="contact-name" name="contact-name" required>
 
@@ -80,6 +92,7 @@
 
                 <button type="submit">Send Message</button>
             </form>
+            <div id="contact-response" class="form-response" role="status" aria-live="polite" hidden></div>
         </section>
     </main>
 
@@ -97,6 +110,7 @@
         <p>&copy; 2026 Lucky Answer Group. All rights reserved.</p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

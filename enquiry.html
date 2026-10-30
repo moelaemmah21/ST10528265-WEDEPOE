@@ -3,17 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get a Quote | Lucky Answer Group</title>
-    <meta name="description" content="Request a quote for electrical or FTTH fibre installation and maintenance services from Lucky Answer Group.">
+    <title>Get a Free Quote | Electrical & Fibre Installation | Lucky Answer Group</title>
+    <meta name="description" content="Request an instant indicative quote and availability for electrical, FTTH fibre or maintenance work from Lucky Answer Group in Gauteng.">
+    <meta name="keywords" content="free quote electrician, fibre installation quote, FTTH cost, electrical quote Pretoria, electrician Johannesburg">
+    <meta name="author" content="Lucky Answer Group">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://moelaemmah21.github.io/ST10528265-WEDEPOE/enquiry.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Get a Free Quote | Electrical & Fibre Installation | Lucky Answer Group">
+    <meta property="og:description" content="Request an instant indicative quote and availability for electrical, FTTH fibre or maintenance work from Lucky Answer Group in Gauteng.">
+    <meta property="og:url" content="https://moelaemmah21.github.io/ST10528265-WEDEPOE/enquiry.html">
+    <meta property="og:image" content="https://moelaemmah21.github.io/ST10528265-WEDEPOE/images/electrician-fibre-installer-hero-banner-1200.jpg">
+    <meta name="theme-color" content="#14324d">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/part3.css">
 </head>
-<body>
+<body data-page="enquiry">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header>
         <div class="branding">
-            <img src="images/logo.png" alt="Lucky Answer Group logo">
+            <img src="images/lucky-answer-group-logo.png" alt="Lucky Answer Group logo">
         </div>
-        <nav aria-label="Main navigation">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+            <span class="hamburger"></span>
+        </label>
+        <nav aria-label="Main navigation" id="primary-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -25,17 +43,14 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="page-header">
             <h1>Request a Quote</h1>
             <p>Tell us what you need and we'll get back to you within one business day.</p>
         </section>
 
-        <!-- ============ QUOTE REQUEST FORM ============ -->
-        <!-- Note: form does not submit anywhere yet. Client-side validation and
-             submission handling (e.g. via EmailJS/Formspree) will be added in Part 3. -->
         <section class="enquiry-form">
-            <form action="#" method="post">
+            <form id="enquiry-form" action="#" method="post" novalidate>
                 <fieldset>
                     <legend>Your Details</legend>
 
@@ -68,12 +83,22 @@
                         <option value="commercial">Commercial / Small Business</option>
                     </select>
 
+                    <label for="quantity">Number of points / households</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="500" value="1">
+
+                    <label for="urgency">How soon do you need us?</label>
+                    <select id="urgency" name="urgency">
+                        <option value="standard">Standard (next available slot)</option>
+                        <option value="urgent">Urgent (within 48 hours, +25%)</option>
+                    </select>
+
                     <label for="message">Tell us more about the job</label>
                     <textarea id="message" name="message" rows="6"></textarea>
                 </fieldset>
 
                 <button type="submit">Submit Enquiry</button>
             </form>
+            <div id="enquiry-response" class="form-response" role="status" aria-live="polite" hidden></div>
         </section>
     </main>
 
@@ -91,6 +116,6 @@
         <p>&copy; 2026 Lucky Answer Group. All rights reserved.</p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
