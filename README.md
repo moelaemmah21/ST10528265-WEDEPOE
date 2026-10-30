@@ -189,6 +189,37 @@ banner image had the headline baked into the JPG as raster text, which
 duplicated the real HTML `<h1>` overlaid on top of it. The image was
 regenerated as a purely decorative background (see Changelog).
 
+## Part 3 Details
+
+**Live site:** https://moelaemmah21.github.io/ST10528265-WEDEPOE/ (deployed with GitHub Pages from the `main` branch)
+
+### Part 2 feedback
+Part 2 received **100%**. No corrections were required; the same CSS structure, responsive breakpoints and file layout were kept and extended in Part 3 (new styles live in `css/part3.css` so the approved Part 2 stylesheet was not disturbed).
+
+### JavaScript features (`js/main.js`)
+| Feature | Where | How it works |
+|---|---|---|
+| Accordion | services.html (FAQ) | Buttons toggle `aria-expanded` and `hidden`; one panel open at a time |
+| Modal | services.html | "View details" opens a dialog built with DOM manipulation; closes with X, Esc or backdrop click |
+| Interactive maps | contact.html | Leaflet + OpenStreetMap, one map and marker with popup per branch (Pretoria and Johannesburg) |
+| Lightbox gallery | index.html (Recent Work / Our Work) | Click or press Enter on a photo to enlarge; previous/next buttons, arrow keys, Esc, focus trap |
+| Dynamic content | services.html | 12 services stored as a JavaScript array and rendered into the page as cards |
+| Search, filter, sort | services.html | Live text search, category filter, sort by name or price |
+| Animations/transitions | all pages | Scroll-reveal (IntersectionObserver), fade-up cards, lightbox/modal transitions, back-to-top button; disabled for `prefers-reduced-motion` |
+| DOM manipulation | all pages | Back-to-top button, lightbox, modal, error messages and responses are created and updated by JavaScript |
+| Enquiry form | enquiry.html | Validates name, email, SA phone number, service, quantity and message with inline error messages; simulated AJAX request then shows a reference number, indicative cost range and earliest availability date |
+| Contact form | contact.html | Validates fields, then compiles an email (recipient set in code per branch: pretoria@/jhb@luckyanswergroup.co.za), shows a preview and opens it with a `mailto:` link |
+
+### SEO
+- **On-page:** unique `<title>`, meta description and meta keywords on every page; one `<h1>` per page with a logical h2/h3 hierarchy; canonical links and Open Graph tags; `lang="en"`; mobile-friendly viewport and responsive layout.
+- **Images:** descriptive file names (e.g. `ftth-fibre-estate-rollout-centurion.jpg`, `electrical-installation-icon.png`) and descriptive alt text on every image.
+- **URLs and links:** short, clean, lowercase page names; internal links between all pages via the header, footer, CTA buttons and "Learn more" links.
+- **Technical:** `robots.txt` and `sitemap.xml` in the site root; scripts loaded with `defer`; responsive `srcset` images; external links use `rel="noopener noreferrer"`; user input is escaped before being displayed (security); Leaflet loaded with Subresource Integrity hashes.
+- **Off-page / local SEO plan:** list both branches on Google Business Profile and local directories (consistent name, address, phone); request customer reviews; build backlinks from estate/body-corporate and electrical-industry directories; share completed projects on Facebook and LinkedIn linking back to the site.
+
+### Deployment
+Hosted free on GitHub Pages (Settings > Pages > Deploy from branch `main`, root).
+
 ## Changelog
 
 | Date | Change |
@@ -207,6 +238,12 @@ regenerated as a purely decorative background (see Changelog).
 | 2026-08-30 | README.md updated with full Part 2 documentation, changelog and references |
 | 2026-09-13 | Part 1 formal feedback received (95/100, Level 4 overall). Addressed the three point-losing items: added wireframes for about/services/contact/enquiry pages (`documents/wireframe-*.png`); added a "Recent Work" portfolio gallery to index.html using the previously-unused portfolio images; added introductory paragraphs to each service block on services.html for extra content depth |
 | 2026-09-13 | Pre-submission polish: added student number to README; generated 800/1200/1600px versions of the hero banner and added `srcset`/`sizes` to index.html for responsive image loading; added an explicit mobile typography adjustment (base font-size and line-height) in the 600px breakpoint; added portfolio-grid responsive styling (3 → 2 → 1 columns) |
+| 2026-10-21 | Part 2 feedback received (100%) — no corrections needed; Part 3 built on the same structure |
+| 2026-10-21 | Added `css/part3.css` (lightbox, modal, accordion, service finder, form states, animations) and linked it on all pages |
+| 2026-10-21 | Built `js/main.js`: lightbox gallery, services search/filter/sort with dynamic cards and modal, FAQ accordion, scroll-reveal animation, back-to-top button |
+| 2026-10-21 | Enquiry form: JavaScript validation with error messages and simulated AJAX response giving indicative cost and earliest availability; added quantity and urgency fields |
+| 2026-10-21 | Contact form: validation and compiled email to the branch recipient; replaced map placeholders with interactive Leaflet/OpenStreetMap maps for Pretoria and Johannesburg |
+| 2026-10-21 | SEO: unique titles, descriptions, keywords, canonical and Open Graph tags; descriptive image file names; `robots.txt` and `sitemap.xml`; "Our Work" added to all navigation menus |
 
 ## References
 - LeadServices, 2026. Fiber optic installation for business in South Africa. [online] Available at: <https://leadservices.co.za/blog/fiber-optic-installation-for-business/> [Accessed 13 August 2026].
@@ -216,6 +253,13 @@ regenerated as a purely decorative background (see Changelog).
 - Mozilla Developer Network (MDN), 2026. CSS Grid Layout. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout> [Accessed 30 August 2026].
 - Mozilla Developer Network (MDN), 2026. Using CSS custom properties (variables). [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties> [Accessed 30 August 2026].
 - Google Fonts, 2026. Poppins and Inter font families. [online] Available at: <https://fonts.google.com/> [Accessed 30 August 2026].
+
+- Leaflet, 2023. Leaflet: an open-source JavaScript library for interactive maps (v1.9.4). [online] Available at: <https://leafletjs.com/> [Accessed 21 October 2026].
+- OpenStreetMap contributors, 2026. OpenStreetMap. [online] Available at: <https://www.openstreetmap.org/copyright> [Accessed 21 October 2026].
+- Mozilla Developer Network (MDN), 2026. Intersection Observer API. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API> [Accessed 21 October 2026].
+- Mozilla Developer Network (MDN), 2026. ARIA: dialog role and accordion patterns. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role> [Accessed 21 October 2026].
+- Google Search Central, 2026. SEO Starter Guide. [online] Available at: <https://developers.google.com/search/docs/fundamentals/seo-starter-guide> [Accessed 21 October 2026].
+- Sitemaps.org, 2026. Sitemaps XML format. [online] Available at: <https://www.sitemaps.org/protocol.html> [Accessed 21 October 2026].
 
 See `content-research/text/sources.md` and `content-research/images/image-credits.md`
 for content- and image-specific sourcing notes.
