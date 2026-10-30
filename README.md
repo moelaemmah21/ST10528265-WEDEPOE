@@ -261,5 +261,7 @@ Hosted free on GitHub Pages (Settings > Pages > Deploy from branch `main`, root)
 - Google Search Central, 2026. SEO Starter Guide. [online] Available at: <https://developers.google.com/search/docs/fundamentals/seo-starter-guide> [Accessed 21 October 2026].
 - Sitemaps.org, 2026. Sitemaps XML format. [online] Available at: <https://www.sitemaps.org/protocol.html> [Accessed 21 October 2026].
 
+- Pexels, 2026. Free stock photographs used in the Recent Work gallery on index.html (eight images, listed in content-research/images/image-credits.md). [online] Available at: <https://www.pexels.com> [Accessed 30 October 2026]. Used under the Pexels Licence: <https://www.pexels.com/license/>.
+
 See `content-research/text/sources.md` and `content-research/images/image-credits.md`
 for content- and image-specific sourcing notes.

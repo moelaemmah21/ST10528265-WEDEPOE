@@ -38,3 +38,14 @@ For any image sourced externally, cite it in this format:
 
 All such citations must also be added to the main `README.md` References
 section and the relevant page's in-text reference where the image appears.
+## Recent Work gallery photographs (added 30 October 2026)
+All eight photographs were downloaded from Pexels (https://www.pexels.com) and are used under the Pexels Licence (https://www.pexels.com/license/), which allows free use. They were resized and compressed for the web.
+
+- yellow-fibre-patch-connectors-distribution-box.jpg
+- orange-fibre-duct-cable-drums-on-site.jpg
+- fibre-network-patch-cables-equipment-rack.jpg
+- multimeter-electrical-testing-bench.jpg
+- electrical-distribution-board-wiring-installation.jpg
+- electrician-working-inside-control-panel.jpg
+- electrician-fitting-wall-socket-with-screwdriver.jpg
+- electrician-testing-circuit-breaker-distribution-board.jpg
