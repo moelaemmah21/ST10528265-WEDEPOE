@@ -5,7 +5,7 @@
 //   1. Helpers
 //   2. Scroll-reveal animation + back-to-top button
 //   3. Gallery lightbox (index.html)
-//   4. Service data, search / filter / sort, modal (services.html)
+//   4. Service data (loaded with AJAX from data/rates.json), search / filter / sort, modal
 //   5. FAQ accordion (services.html)
 //   6. Form validation helpers
 //   7. Enquiry form: validation + instant quote response (enquiry.html)
@@ -178,6 +178,30 @@
     ];
     var CAT_LABEL = { electrical: 'Electrical', fibre: 'Fibre (FTTH)', maintenance: 'Maintenance' };
 
+    // AJAX: services and pricing rates are loaded asynchronously from data/rates.json with fetch().
+    // The built-in values in this file are only a fallback if the request fails (e.g. offline).
+    var dataPromise = null;
+    function applyData(j) {
+        if (j.services) { SERVICES = j.services; }
+        if (j.baseRates) { BASE = j.baseRates; }
+        if (j.leadDays) { LEAD_DAYS = j.leadDays; }
+        if (j.propertyFactor) { PROPERTY_FACTOR = j.propertyFactor; }
+        if (j.urgentFactor) { URGENT_FACTOR = j.urgentFactor; }
+    }
+    function fetchJSON(url) {
+        return fetch(url, { headers: { 'Accept': 'application/json' }, cache: 'no-store' }).then(function (r) {
+            if (!r.ok) { throw new Error('HTTP ' + r.status); }
+            return r.json();
+        });
+    }
+    function loadData() {
+        if (!dataPromise) {
+            dataPromise = fetchJSON('data/rates.json').then(function (j) { applyData(j); return true; })
+                .catch(function () { return false; });   // false = using fallback values
+        }
+        return dataPromise;
+    }
+
     function initServices() {
         var list = $('#svc-list');
         if (!list) { return; }
@@ -224,7 +248,8 @@
         search.addEventListener('input', render);
         cat.addEventListener('change', render);
         sort.addEventListener('change', render);
-        render();
+        count.textContent = 'Loading services\u2026';
+        loadData().then(render);
     }
 
     // Modal ("quick view") built entirely with DOM manipulation
@@ -342,6 +367,7 @@
     var BASE = { electrical: 1450, ftth: 1950, maintenance: 1800, other: 0 };
     var LEAD_DAYS = { electrical: 3, ftth: 5, maintenance: 7, other: 5 };
     var PROPERTY_FACTOR = { residential: 1, estate: 1.3, commercial: 1.25 };
+    var URGENT_FACTOR = 1.25;
     var SERVICE_LABEL = {
         electrical: 'Electrical Installation / Fault-Finding', ftth: 'FTTH Fibre Installation',
         maintenance: 'Maintenance Contract', other: 'Other / Not Sure'
@@ -363,19 +389,29 @@
         if (urgent) { lead = 2; }
         var result = { date: addBusinessDays(new Date(), lead), lead: lead, needsSurvey: data.service === 'other' };
         if (data.service !== 'other') {
-            var est = BASE[data.service] * qty * PROPERTY_FACTOR[data.property] * (urgent ? 1.25 : 1);
+            var est = BASE[data.service] * qty * PROPERTY_FACTOR[data.property] * (urgent ? URGENT_FACTOR : 1);
             result.low = est; result.high = est * 1.2;
         }
         return result;
     }
 
-    // Simulated AJAX request: returns a Promise that resolves like a server reply would.
-    // On a hosted site, replace the body with fetch('/api/enquiry', { method: 'POST', body: JSON.stringify(data) }).
+    // AJAX form submission: the enquiry is sent asynchronously (no page reload) with fetch().
+    // The details travel as a query string to data/rates.json, which returns the current rates;
+    // the quote is then calculated from that reply. On a site with a back end, this same call
+    // would be a POST to the server. If the request fails, saved rates are used and the user is told.
     function sendToServer(data) {
-        return new Promise(function (resolve) {
-            setTimeout(function () {
-                resolve({ ok: true, reference: 'LAG-' + Date.now().toString().slice(-6), quote: calculateQuote(data) });
-            }, 900);
+        var qs = new URLSearchParams({
+            service: data.service, property: data.property, quantity: data.quantity, urgency: data.urgency
+        });
+        return fetchJSON('data/rates.json?' + qs.toString()).then(function (rates) {
+            applyData(rates);
+            return { ok: true, offline: false };
+        }).catch(function () {
+            return { ok: true, offline: true };
+        }).then(function (res) {
+            res.reference = 'LAG-' + Date.now().toString().slice(-6);
+            res.quote = calculateQuote(data);
+            return res;
         });
     }
 
@@ -421,7 +457,8 @@
                 html += '<dt>Earliest availability</dt><dd><strong>' + esc(dateStr) + '</strong>' +
                     (data.urgency === 'urgent' ? ' (urgent slot)' : '') + '</dd></dl>' +
                     '<p class="note">This is an estimate only. A consultant will confirm the final price and booking by email at ' +
-                    esc(data.email) + ' within one business day.</p>';
+                    esc(data.email) + ' within one business day.</p>' +
+                    (res.offline ? '<p class="note">Note: live rates could not be loaded, so saved rates were used.</p>' : '');
                 out.className = 'form-response';
                 out.innerHTML = html;
                 out.setAttribute('tabindex', '-1');

@@ -94,6 +94,8 @@ ST10528265 WEDEPOE/
 │   └── part3.css          (Part 3 styles)
 ├── js/
 │   └── main.js            (Part 3 JavaScript)
+├── data/
+│   └── rates.json         (services and pricing rates, loaded with AJAX)
 ├── images/                (logo, icons, hero banner, gallery photographs)
 ├── documents/             (sitemap, wireframes, responsive-testing screenshots)
 ├── content-research/
@@ -239,11 +241,11 @@ Part 2 received **100%**. No corrections were required; the same CSS structure, 
 | Modal | services.html | "View details" opens a dialog built with DOM manipulation; closes with X, Esc or backdrop click |
 | Interactive maps | contact.html | Leaflet + OpenStreetMap, one map and marker with popup per branch (Pretoria and Johannesburg) |
 | Lightbox gallery | index.html (Recent Work / Our Work) | Click or press Enter on a photo to enlarge; previous/next buttons, arrow keys, Esc, focus trap |
-| Dynamic content | services.html | 12 services stored as a JavaScript array and rendered into the page as cards |
+| Dynamic content (AJAX) | services.html | The 12 services are loaded asynchronously from `data/rates.json` with `fetch()` and rendered into the page as cards by JavaScript |
 | Search, filter, sort | services.html | Live text search, category filter, sort by name or price |
 | Animations/transitions | all pages | Scroll-reveal (IntersectionObserver), fade-up cards, lightbox/modal transitions, back-to-top button; disabled for `prefers-reduced-motion` |
 | DOM manipulation | all pages | Back-to-top button, lightbox, modal, error messages and responses are created and updated by JavaScript |
-| Enquiry form | enquiry.html | Validates name, email, SA phone number, service, quantity and message with inline error messages; simulated AJAX request then shows a reference number, indicative cost range and earliest availability date |
+| Enquiry form | enquiry.html | Validates name, email, SA phone number, service, quantity and message with inline error messages; on submit the form is sent with an AJAX `fetch()` request (no page reload) that loads the current rates from `data/rates.json`, then shows a reference number, indicative cost range and earliest availability date; if the request fails, saved rates are used and the visitor is told |
 | Contact form | contact.html | Validates fields, then compiles an email (recipient set in code per branch: pretoria@/jhb@luckyanswergroup.co.za), shows a preview and opens it with a `mailto:` link |
 
 ### SEO
@@ -283,12 +285,13 @@ Hosted free on GitHub Pages (Settings > Pages > Deploy from branch `main`, root)
 | 2026-10-21 | Part 2 feedback received (100%) — no corrections needed; Part 3 built on the same structure |
 | 2026-10-21 | Added `css/part3.css` (lightbox, modal, accordion, service finder, form states, animations) and linked it on all pages |
 | 2026-10-21 | Built `js/main.js`: lightbox gallery, services search/filter/sort with dynamic cards and modal, FAQ accordion, scroll-reveal animation, back-to-top button |
-| 2026-10-21 | Enquiry form: JavaScript validation with error messages and simulated AJAX response giving indicative cost and earliest availability; added quantity and urgency fields |
+| 2026-10-21 | Enquiry form: JavaScript validation with error messages and an instant response giving indicative cost and earliest availability; added quantity and urgency fields |
 | 2026-10-21 | Contact form: validation and compiled email to the branch recipient; replaced map placeholders with interactive Leaflet/OpenStreetMap maps for Pretoria and Johannesburg |
 | 2026-10-21 | SEO: unique titles, descriptions, keywords, canonical and Open Graph tags; descriptive image file names; `robots.txt` and `sitemap.xml`; "Our Work" added to all navigation menus |
 | 2026-10-30 | Renamed all images to descriptive, lowercase, hyphenated file names (e.g. `lucky-answer-group-logo.png`, `electrician-fibre-installer-hero-banner-1600.jpg`) and updated every reference in the HTML pages, for SEO |
 | 2026-10-30 | Deployed Part 3 to GitHub Pages and tested the live site on desktop and a real phone: lightbox, services search/sort/details, both maps, enquiry and contact forms |
 | 2026-10-30 | Replaced the generated placeholder gallery images with eight real photographs from Pexels, with descriptive alt text and captions; gallery grid changed to four columns on wide screens and `loading="lazy"` added |
+| 2026-10-30 | Replaced the simulated enquiry submission with real AJAX: the form now sends an asynchronous `fetch()` request and the quote is calculated from `data/rates.json`; the services list is also loaded from the same JSON file with `fetch()`; saved rates are used as a fallback if the request fails |
 | 2026-10-30 | README updated for Part 3: project status, timeline, sitemap and folder structure, Part 3 details, testing notes, changelog and references (including Pexels photo credits) |
 
 ## References

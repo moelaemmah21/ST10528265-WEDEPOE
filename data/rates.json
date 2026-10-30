@@ -1,0 +1,184 @@
+{
+  "version": "2026-10-30",
+  "currency": "ZAR",
+  "baseRates": {
+    "electrical": 1450,
+    "ftth": 1950,
+    "maintenance": 1800,
+    "other": 0
+  },
+  "leadDays": {
+    "electrical": 3,
+    "ftth": 5,
+    "maintenance": 7,
+    "other": 5
+  },
+  "propertyFactor": {
+    "residential": 1,
+    "estate": 1.3,
+    "commercial": 1.25
+  },
+  "urgentFactor": 1.25,
+  "urgentLeadDays": 2,
+  "bulkThreshold": 20,
+  "bulkExtraDays": 5,
+  "rangeUpperFactor": 1.2,
+  "services": [
+    {
+      "id": "coc",
+      "name": "Certificate of Compliance (CoC) Inspection",
+      "cat": "electrical",
+      "price": 1450,
+      "unit": "per inspection",
+      "desc": "Full inspection of your installation and a CoC issued once it passes.",
+      "points": [
+        "Required when selling a property",
+        "Written fault list if it fails",
+        "Re-inspection after repairs"
+      ]
+    },
+    {
+      "id": "db",
+      "name": "Distribution Board (DB) Upgrade",
+      "cat": "electrical",
+      "price": 4800,
+      "unit": "from",
+      "desc": "Replace an old DB board with modern breakers, earth-leakage and surge protection.",
+      "points": [
+        "SANS-compliant board and breakers",
+        "Earth leakage protection",
+        "CoC issued on completion"
+      ]
+    },
+    {
+      "id": "rewire",
+      "name": "House Rewiring",
+      "cat": "electrical",
+      "price": 2200,
+      "unit": "per room",
+      "desc": "Complete rewiring for older homes and renovations.",
+      "points": [
+        "New cabling, plugs and lighting circuits",
+        "Minimal wall damage",
+        "CoC issued on completion"
+      ]
+    },
+    {
+      "id": "fault",
+      "name": "Electrical Fault-Finding Call-out",
+      "cat": "electrical",
+      "price": 850,
+      "unit": "per call-out",
+      "desc": "Fast diagnosis of tripping breakers, power loss and faulty circuits.",
+      "points": [
+        "Emergency call-outs across Gauteng",
+        "Fault explained before repair",
+        "Priority for contract clients"
+      ]
+    },
+    {
+      "id": "ftth-home",
+      "name": "FTTH Home Installation",
+      "cat": "fibre",
+      "price": 1950,
+      "unit": "per home",
+      "desc": "Fibre-to-the-home installation from the boundary to a working, tested connection.",
+      "points": [
+        "Cable routing and wall termination",
+        "ONT and router setup",
+        "Speed test on completion"
+      ]
+    },
+    {
+      "id": "ftth-estate",
+      "name": "Estate / Complex Fibre Rollout",
+      "cat": "fibre",
+      "price": 1200,
+      "unit": "per household",
+      "desc": "Phased FTTH rollouts for estates and complexes after a site survey.",
+      "points": [
+        "Site survey and project plan",
+        "Trenching, ducting and cabling coordination",
+        "Per-household activation"
+      ]
+    },
+    {
+      "id": "splice",
+      "name": "Fibre Splicing & Termination",
+      "cat": "fibre",
+      "price": 650,
+      "unit": "per splice point",
+      "desc": "Precision splicing and termination in line with SANS 10198 guidelines.",
+      "points": [
+        "Fusion splicing and loss testing",
+        "Patch panel termination",
+        "Test results supplied"
+      ]
+    },
+    {
+      "id": "ont",
+      "name": "Router & ONT Setup",
+      "cat": "fibre",
+      "price": 450,
+      "unit": "per setup",
+      "desc": "Configure your Optical Network Terminal and router for a stable connection.",
+      "points": [
+        "Wi-Fi placement advice",
+        "Secure configuration",
+        "Device handover and walkthrough"
+      ]
+    },
+    {
+      "id": "fibre-fault",
+      "name": "Fibre Fault Repair & Re-splicing",
+      "cat": "fibre",
+      "price": 750,
+      "unit": "per repair",
+      "desc": "Diagnose and repair damaged or degraded fibre connections.",
+      "points": [
+        "OTDR / power-meter fault location",
+        "Re-splicing of damaged cable",
+        "Quick turnaround"
+      ]
+    },
+    {
+      "id": "maint-elec",
+      "name": "Electrical Maintenance Contract",
+      "cat": "maintenance",
+      "price": 1800,
+      "unit": "per month",
+      "desc": "Scheduled safety inspections and preventative maintenance for estates and businesses.",
+      "points": [
+        "Scheduled inspections",
+        "Priority call-out response",
+        "Compliance records kept up to date"
+      ]
+    },
+    {
+      "id": "maint-fibre",
+      "name": "Fibre Network Health Check",
+      "cat": "maintenance",
+      "price": 1200,
+      "unit": "per visit",
+      "desc": "Preventative check of your fibre network to avoid downtime.",
+      "points": [
+        "Signal and loss testing",
+        "Cabling and enclosure inspection",
+        "Report with recommendations"
+      ]
+    },
+    {
+      "id": "maint-custom",
+      "name": "Custom Estate Maintenance Package",
+      "cat": "maintenance",
+      "price": 3500,
+      "unit": "per month",
+      "desc": "A combined electrical and fibre plan built around your site size and needs.",
+      "points": [
+        "One point of contact for both",
+        "Custom schedule",
+        "Monthly service report"
+      ]
+    }
+  ]
+}
