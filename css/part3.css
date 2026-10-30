@@ -1,0 +1,101 @@
+/* =========================================================
+   Lucky Answer Group — part3.css (Part 3 additions)
+   Lightbox, accordion, modal, service finder, maps,
+   form validation states, animations.
+   ========================================================= */
+
+/* ---------- Scroll-reveal animation ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { animation: none !important; }
+}
+
+/* ---------- Back-to-top button (created with JS) ---------- */
+.back-to-top {
+    position: fixed; right: 1rem; bottom: 1rem; width: 44px; height: 44px;
+    border: 0; border-radius: 50%; background: var(--color-amber); color: var(--color-navy);
+    font-size: 1.25rem; font-weight: 700; cursor: pointer; box-shadow: var(--shadow);
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+    z-index: 900;
+}
+.back-to-top.show { opacity: 1; visibility: visible; }
+.back-to-top:hover, .back-to-top:focus { background: var(--color-amber-dark); transform: translateY(-3px); }
+
+/* ---------- Gallery + lightbox ---------- */
+.portfolio-grid img { cursor: zoom-in; }
+.gallery-hint { text-align: center; color: var(--color-text-muted); font-size: var(--fs-sm); margin-top: var(--space-sm); }
+.lightbox {
+    position: fixed; inset: 0; background: rgba(10, 20, 30, 0.92); display: flex;
+    flex-direction: column; align-items: center; justify-content: center; padding: 1rem;
+    z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.25s ease;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+.lightbox img { max-width: min(92vw, 1000px); max-height: 75vh; border-radius: var(--radius); box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.96); transition: transform 0.25s ease; }
+.lightbox.open img { transform: scale(1); }
+.lightbox-caption { color: #fff; margin-top: 0.75rem; text-align: center; max-width: 90vw; }
+.lightbox-counter { color: #cfd8e0; font-size: var(--fs-sm); }
+.lightbox button {
+    position: absolute; background: rgba(255,255,255,0.15); color: #fff; border: 0;
+    width: 48px; height: 48px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; transition: background 0.2s;
+}
+.lightbox button:hover, .lightbox button:focus { background: var(--color-amber); color: var(--color-navy); }
+.lightbox-close { top: 1rem; right: 1rem; }
+.lightbox-prev { left: 1rem; top: 50%; }
+.lightbox-next { right: 1rem; top: 50%; }
+
+/* ---------- Maps ---------- */
+.map { height: 260px; border-radius: var(--radius); border: 1px solid var(--color-border); margin-top: var(--space-sm); z-index: 1; }
+
+/* ---------- Service finder ---------- */
+.service-finder { margin-bottom: var(--space-xl); }
+.finder-controls { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-sm); margin: var(--space-md) 0 var(--space-sm); }
+.finder-count { color: var(--color-text-muted); font-size: var(--fs-sm); margin-bottom: var(--space-sm); }
+.svc-card { display: flex; flex-direction: column; gap: var(--space-xs); animation: fadeUp 0.4s ease both; }
+.svc-card .tag { align-self: flex-start; background: var(--color-light-alt); color: var(--color-navy); font-size: var(--fs-sm); padding: 0.15rem 0.6rem; border-radius: 999px; }
+.svc-card .price { font-weight: 700; color: var(--color-navy); }
+.svc-card button, .btn-secondary {
+    margin-top: auto; background: var(--color-navy); color: #fff; border: 0; border-radius: var(--radius);
+    padding: 0.55rem 1rem; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease;
+}
+.svc-card button:hover, .svc-card button:focus { background: var(--color-amber-dark); transform: translateY(-2px); }
+.no-results { grid-column: 1 / -1; text-align: center; padding: var(--space-lg); background: var(--color-light); border-radius: var(--radius); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (max-width: 600px) { .finder-controls { grid-template-columns: 1fr; } }
+
+/* ---------- Modal ---------- */
+.modal-backdrop { position: fixed; inset: 0; background: rgba(10,20,30,0.7); display: flex; align-items: center; justify-content: center; padding: 1rem; z-index: 1900; opacity: 0; visibility: hidden; transition: opacity 0.25s ease; }
+.modal-backdrop.open { opacity: 1; visibility: visible; }
+.modal { background: #fff; border-radius: var(--radius); max-width: 520px; width: 100%; padding: var(--space-lg); position: relative; transform: translateY(20px); transition: transform 0.25s ease; }
+.modal-backdrop.open .modal { transform: none; }
+.modal-close { position: absolute; top: 0.5rem; right: 0.75rem; background: none; border: 0; font-size: 1.75rem; cursor: pointer; color: var(--color-navy); }
+.modal ul { margin: var(--space-sm) 0 var(--space-md) 1.25rem; }
+
+/* ---------- Accordion (FAQ) ---------- */
+.faq { margin-bottom: var(--space-xl); }
+.accordion { max-width: 800px; margin: var(--space-md) auto 0; }
+.accordion h3 { margin: 0; font-size: var(--fs-base); }
+.accordion-trigger {
+    width: 100%; text-align: left; background: var(--color-light); border: 1px solid var(--color-border);
+    padding: 1rem 3rem 1rem 1rem; font: inherit; font-weight: 600; color: var(--color-navy); cursor: pointer; position: relative;
+    margin-top: -1px; transition: background 0.2s ease;
+}
+.accordion-trigger::after { content: "+"; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: 1.4rem; transition: transform 0.25s ease; }
+.accordion-trigger[aria-expanded="true"] { background: var(--color-light-alt); }
+.accordion-trigger[aria-expanded="true"]::after { content: "–"; }
+.accordion-trigger:hover, .accordion-trigger:focus { background: var(--color-light-alt); }
+.accordion-panel { padding: 1rem; border: 1px solid var(--color-border); border-top: 0; background: #fff; animation: fadeUp 0.3s ease; }
+
+/* ---------- Form validation states ---------- */
+input.invalid, select.invalid, textarea.invalid { border-color: #b3261e; box-shadow: 0 0 0 2px rgba(179,38,30,0.15); }
+input.valid, select.valid, textarea.valid { border-color: #2e7d32; }
+.error-msg { color: #b3261e; font-size: var(--fs-sm); margin-top: 0.25rem; min-height: 1.1em; }
+.form-response { max-width: 640px; margin: var(--space-md) auto 0; padding: var(--space-md); border-radius: var(--radius); background: #e8f5e9; border: 1px solid #2e7d32; animation: fadeUp 0.4s ease; }
+.form-response.loading { background: var(--color-light); border-color: var(--color-border); }
+.form-response h2 { font-size: var(--fs-h3); margin-bottom: var(--space-xs); }
+.form-response dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; margin: var(--space-sm) 0; }
+.form-response dt { font-weight: 600; }
+.form-response pre { white-space: pre-wrap; background: #fff; padding: var(--space-sm); border-radius: var(--radius); font-size: var(--fs-sm); }
+.form-response .note { font-size: var(--fs-sm); color: var(--color-text-muted); }
+button[disabled] { opacity: 0.6; cursor: wait; }
