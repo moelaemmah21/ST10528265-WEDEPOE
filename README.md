@@ -20,11 +20,16 @@ Answer Group across three parts:
 
 - **Part 1:** Project planning, sitemap, file/folder structure, and static
   HTML page structure with content.
-- **Part 2 (current):** CSS styling — external stylesheet, typography,
+- **Part 2:** CSS styling — external stylesheet, typography,
   CSS Grid/Flexbox layout, colour scheme, pseudo-classes, and full
-  responsive design with media queries.
-- **Part 3 (future):** JavaScript functionality — form validation,
-  interactive behaviour, and dynamic content.
+  responsive design with media queries (marked 100%).
+- **Part 3 (current):** JavaScript functionality and SEO — interactive
+  maps, lightbox gallery, accordion and modal, dynamic searchable services,
+  validated enquiry and contact forms, SEO best practices and deployment on
+  GitHub Pages.
+
+**Live website:** https://moelaemmah21.github.io/ST10528265-WEDEPOE/
+**Repository:** https://github.com/moelaemmah21/ST10528265-WEDEPOE
 
 ## Website Goals and Objectives
 - Generate qualified online quote requests instead of relying solely on
@@ -43,9 +48,12 @@ rate, average time on the Services page, returning-visitor rate.
 - About Us page detailing company history, mission, vision and certifications
 - Services page covering electrical installations, FTTH installation and
   maintenance contracts, each with an introductory overview
-- Online quote-request (enquiry) form
-- Contact page with two branch locations (Pretoria and Johannesburg) and a
-  contact form
+- Online quote-request (enquiry) form with JavaScript validation and an
+  instant indicative cost and availability response
+- Contact page with two interactive maps (Pretoria and Johannesburg) and a
+  validated contact form that compiles an email to the chosen branch
+- Searchable, filterable and sortable services finder, FAQ accordion,
+  details pop-up and a lightbox photo gallery
 - Consistent, sticky header navigation with active-page and hover states
 - Fully responsive layout (desktop, tablet, mobile) with a pure-CSS
   hamburger menu on small screens
@@ -56,15 +64,43 @@ rate, average time on the Services page, returning-visitor rate.
 |---|---|---|
 | Weeks 1-2 | Planning, target-audience research, content & asset gathering | Approved Website Project Proposal |
 | Weeks 3-4 | File/folder structure, sitemap, HTML page structure & navigation | Part 1 submission (HTML skeleton + GitHub repo) |
-| Weeks 5-7 | CSS styling, responsive layout, SEO basics | **Part 2 submission (current)** |
-| Weeks 8-10 | JavaScript functionality, cross-browser testing, final polish | Part 3 submission (final website) |
+| Weeks 5-7 | CSS styling, responsive layout, SEO basics | Part 2 submission (100%) |
+| Weeks 8-10 | JavaScript functionality, SEO, deployment, final polish | **Part 3 submission (final website, current)** |
 
 ## Part 1 Details
 
 ### Sitemap
 See `documents/sitemap.png` for the full visual sitemap. Structure summary:
 
+- Home (`index.html`) — includes the Recent Work gallery (`index.html#portfolio`, linked as "Our Work")
+  - About Us (`about.html`)
+  - Services (`services.html`)
+  - Get a Quote (`enquiry.html`)
+  - Contact (`contact.html`)
+
 ### File and Folder Structure
+```
+ST10528265 WEDEPOE/
+├── index.html
+├── about.html
+├── services.html
+├── enquiry.html
+├── contact.html
+├── robots.txt
+├── sitemap.xml
+├── README.md
+├── css/
+│   ├── style.css          (Part 2 styles)
+│   └── part3.css          (Part 3 styles)
+├── js/
+│   └── main.js            (Part 3 JavaScript)
+├── images/                (logo, icons, hero banner, gallery photographs)
+├── documents/             (sitemap, wireframes, responsive-testing screenshots)
+├── content-research/
+│   ├── images/image-credits.md
+│   └── text/sources.md
+└── text/sources.md
+```
 
 ## Part 2 Details
 
@@ -212,13 +248,19 @@ Part 2 received **100%**. No corrections were required; the same CSS structure, 
 
 ### SEO
 - **On-page:** unique `<title>`, meta description and meta keywords on every page; one `<h1>` per page with a logical h2/h3 hierarchy; canonical links and Open Graph tags; `lang="en"`; mobile-friendly viewport and responsive layout.
-- **Images:** descriptive file names (e.g. `ftth-fibre-estate-rollout-centurion.jpg`, `electrical-installation-icon.png`) and descriptive alt text on every image.
+- **Images:** descriptive file names (e.g. `yellow-fibre-patch-connectors-distribution-box.jpg`, `electrical-installation-icon.png`) and descriptive alt text on every image; gallery images use `loading="lazy"`.
 - **URLs and links:** short, clean, lowercase page names; internal links between all pages via the header, footer, CTA buttons and "Learn more" links.
 - **Technical:** `robots.txt` and `sitemap.xml` in the site root; scripts loaded with `defer`; responsive `srcset` images; external links use `rel="noopener noreferrer"`; user input is escaped before being displayed (security); Leaflet loaded with Subresource Integrity hashes.
 - **Off-page / local SEO plan:** list both branches on Google Business Profile and local directories (consistent name, address, phone); request customer reviews; build backlinks from estate/body-corporate and electrical-industry directories; share completed projects on Facebook and LinkedIn linking back to the site.
 
+### Photographs
+The Recent Work gallery uses eight real photographs from Pexels (free licence), replacing the earlier generated placeholder images. They were resized and compressed for the web and are credited in the References and in `content-research/images/image-credits.md`.
+
+### Testing
+The site was tested in a desktop browser and on a real phone (live GitHub Pages site): lightbox open, next and close; services search ("fibre"), sort and details pop-up; both Leaflet maps loading with markers and popups; enquiry form validation errors and a successful submission showing a reference number, cost range and availability date; contact form validation and compiled email.
+
 ### Deployment
-Hosted free on GitHub Pages (Settings > Pages > Deploy from branch `main`, root).
+Hosted free on GitHub Pages (Settings > Pages > Deploy from branch `main`, root) at https://moelaemmah21.github.io/ST10528265-WEDEPOE/. Every push to `main` rebuilds the site automatically.
 
 ## Changelog
 
@@ -244,6 +286,10 @@ Hosted free on GitHub Pages (Settings > Pages > Deploy from branch `main`, root)
 | 2026-10-21 | Enquiry form: JavaScript validation with error messages and simulated AJAX response giving indicative cost and earliest availability; added quantity and urgency fields |
 | 2026-10-21 | Contact form: validation and compiled email to the branch recipient; replaced map placeholders with interactive Leaflet/OpenStreetMap maps for Pretoria and Johannesburg |
 | 2026-10-21 | SEO: unique titles, descriptions, keywords, canonical and Open Graph tags; descriptive image file names; `robots.txt` and `sitemap.xml`; "Our Work" added to all navigation menus |
+| 2026-10-30 | Renamed all images to descriptive, lowercase, hyphenated file names (e.g. `lucky-answer-group-logo.png`, `electrician-fibre-installer-hero-banner-1600.jpg`) and updated every reference in the HTML pages, for SEO |
+| 2026-10-30 | Deployed Part 3 to GitHub Pages and tested the live site on desktop and a real phone: lightbox, services search/sort/details, both maps, enquiry and contact forms |
+| 2026-10-30 | Replaced the generated placeholder gallery images with eight real photographs from Pexels, with descriptive alt text and captions; gallery grid changed to four columns on wide screens and `loading="lazy"` added |
+| 2026-10-30 | README updated for Part 3: project status, timeline, sitemap and folder structure, Part 3 details, testing notes, changelog and references (including Pexels photo credits) |
 
 ## References
 - LeadServices, 2026. Fiber optic installation for business in South Africa. [online] Available at: <https://leadservices.co.za/blog/fiber-optic-installation-for-business/> [Accessed 13 August 2026].
@@ -253,14 +299,12 @@ Hosted free on GitHub Pages (Settings > Pages > Deploy from branch `main`, root)
 - Mozilla Developer Network (MDN), 2026. CSS Grid Layout. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout> [Accessed 30 August 2026].
 - Mozilla Developer Network (MDN), 2026. Using CSS custom properties (variables). [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties> [Accessed 30 August 2026].
 - Google Fonts, 2026. Poppins and Inter font families. [online] Available at: <https://fonts.google.com/> [Accessed 30 August 2026].
-
 - Leaflet, 2023. Leaflet: an open-source JavaScript library for interactive maps (v1.9.4). [online] Available at: <https://leafletjs.com/> [Accessed 21 October 2026].
 - OpenStreetMap contributors, 2026. OpenStreetMap. [online] Available at: <https://www.openstreetmap.org/copyright> [Accessed 21 October 2026].
 - Mozilla Developer Network (MDN), 2026. Intersection Observer API. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API> [Accessed 21 October 2026].
 - Mozilla Developer Network (MDN), 2026. ARIA: dialog role and accordion patterns. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role> [Accessed 21 October 2026].
 - Google Search Central, 2026. SEO Starter Guide. [online] Available at: <https://developers.google.com/search/docs/fundamentals/seo-starter-guide> [Accessed 21 October 2026].
 - Sitemaps.org, 2026. Sitemaps XML format. [online] Available at: <https://www.sitemaps.org/protocol.html> [Accessed 21 October 2026].
-
 - Pexels, 2026. Free stock photographs used in the Recent Work gallery on index.html (eight images, listed in content-research/images/image-credits.md). [online] Available at: <https://www.pexels.com> [Accessed 30 October 2026]. Used under the Pexels Licence: <https://www.pexels.com/license/>.
 
 See `content-research/text/sources.md` and `content-research/images/image-credits.md`
